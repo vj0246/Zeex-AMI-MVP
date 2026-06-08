@@ -67,6 +67,9 @@ traits:[
 }
 
 }
+const SEG_KEYS   = Object.keys(SEG)
+const VECTORS    = ["Dependent Aspirational","Shared Household Distress","High Density Dilution","Independent Pro"]
+const STRATEGIES = ["Fatigue Breakthrough","Swift Action Drive","Educational Hook"]
 // ── MICRO COMPONENTS ──────────────────────────────────────────────────────────
 
 const Tag = ({ label, value, color }) => !value ? null : (
