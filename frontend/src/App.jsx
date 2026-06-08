@@ -622,7 +622,7 @@ export default function App() {
   }
 
   return (
-    <div style={{ maxWidth:1400, margin:"0 auto", padding:"48px 40px" }}>
+    <div style={{ maxWidth:1200, margin:"0 auto", padding:"36px 24px" }}>
 
       {/* HEADER */}
       <div style={{ marginBottom:36, paddingBottom:24, borderBottom:"1px solid var(--border)" }}>
