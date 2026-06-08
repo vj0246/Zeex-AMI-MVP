@@ -177,7 +177,62 @@ const NotifCard = ({ notif, index }) => {
       <p style={{ fontSize:15
 , color:"var(--text)", lineHeight:1.65, opacity:0.72, margin:0 }}>{notif.body}</p>
       <Divider />
-      {notif.scheme_name && (<divstyle={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,flexWrap:"wrap"}}><pstyle={{fontSize:14,fontWeight:500,color,margin:0,opacity:0.9}}>{notif.scheme_name}</p>{notif.scheme_url && (<buttononClick={() =>window.open(notif.scheme_url,"_blank")}style={{padding:"8px 14px",background:"var(--accent)",color:"#ffffff",border:"none",borderRadius:8,cursor:"pointer",fontWeight:600,fontSize:13}}>View Scheme →</button>)}</div>)}
+      <Divider />
+
+{notif.scheme_name && (
+
+<div
+style={{
+display:"flex",
+justifyContent:"space-between",
+alignItems:"center",
+gap:12,
+flexWrap:"wrap"
+}}
+>
+
+<p
+style={{
+fontSize:14,
+fontWeight:500,
+color,
+margin:0,
+opacity:0.9
+}}
+>
+{notif.scheme_name}
+</p>
+
+{notif.scheme_url && (
+
+<button
+onClick={() =>
+window.open(
+notif.scheme_url,
+"_blank"
+)
+}
+style={{
+padding:"8px 14px",
+background:"var(--accent)",
+color:"#ffffff",
+border:"none",
+borderRadius:8,
+cursor:"pointer",
+fontWeight:600,
+fontSize:13
+}}
+
+>
+
+View Scheme → </button>
+
+)}
+
+</div>
+
+)}
+
 
 
 
