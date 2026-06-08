@@ -177,8 +177,10 @@ const NotifCard = ({ notif, index }) => {
       <p style={{ fontSize:15
 , color:"var(--text)", lineHeight:1.65, opacity:0.72, margin:0 }}>{notif.body}</p>
       <Divider />
-      {notif.scheme_name && <p style={{ fontSize:14
-, fontWeight:500, color, margin:0, opacity:0.9 }}>{notif.scheme_name}</p>}
+      {notif.scheme_name && (<divstyle={{display:"flex",justifyContent:"space-between",alignItems:"center",gap:12,flexWrap:"wrap"}}><pstyle={{fontSize:14,fontWeight:500,color,margin:0,opacity:0.9}}>{notif.scheme_name}</p>{notif.scheme_url && (<buttononClick={() =>window.open(notif.scheme_url,"_blank")}style={{padding:"8px 14px",background:"var(--accent)",color:"#ffffff",border:"none",borderRadius:8,cursor:"pointer",fontWeight:600,fontSize:13}}>View Scheme →</button>)}</div>)}
+
+
+
       <div style={{ display:"flex", flexWrap:"wrap", gap:5 }}>
         <Tag label="ID"     value={notif.scheme_id}              color={color} />
         <Tag label="Lang"   value={notif.language}               color={color} />
@@ -483,7 +485,7 @@ const Dashboard = ({ records, onRefresh, loading }) => {
     records.forEach(u => {
       map[String(u.user_id)] = u.segment_key
       const ts = u.generated_at ? new Date(u.generated_at).getTime() : 0
-      u.notifications.forEach(n => flat.push({ ...n, user_id: u.user_id, _ts: ts }))
+      u.notifications.forEach(n =>flat.push({...n,scheme_url:n.scheme_url,user_id:u.user_id,_ts:ts}))
     })
     return { allNotifs: flat, userMap: map }
   }, [records])

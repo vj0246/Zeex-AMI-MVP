@@ -131,11 +131,44 @@ def fetch_user(uid: str) -> dict:
     return res.data[0]
 
 
-def fetch_schemes() -> list:
-    sb  = get_sb()
-    res = sb.table(TABLE_SCHEMES).select("id, name").eq("is_active", True).execute()
-    return res.data or []
+#def fetch_schemes() -> list:
+#    sb  = get_sb()
+#    res = sb.table(TABLE_SCHEMES).select("id, name").eq("is_active", True).execute()
+#    return res.data or []
+def fetch_schemes() :-> list:
+sb = get_sb()
 
+res = (
+    sb
+    .table(TABLE_SCHEMES)
+    .select(
+        "id,name,scheme_url"
+    )
+    .eq(
+        "is_active",
+        True
+    )
+    .execute()
+)
+
+schemes = res.data or []
+
+for s in schemes:
+
+    sid = s.get(
+        "scheme_url",
+        ""
+    )
+
+    if sid:
+
+        s["scheme_url"] = (
+            "https://www.google.com/search?q="
+            + s["name"]
+            + "+official+government+scheme"
+        )
+
+return schemes
 
 def save_to_supabase(user_id: str, segment_key: str, notifications: list):
     sb = get_sb()
