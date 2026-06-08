@@ -137,9 +137,8 @@ def fetch_user(uid: str) -> dict:
 #    return res.data or []
 
 def fetch_schemes():
-
     sb = get_sb()
-
+    
     res = (
         sb
         .table(TABLE_SCHEMES)
@@ -152,27 +151,25 @@ def fetch_schemes():
         )
         .execute()
     )
-
+    
     schemes = res.data or []
     
-    return schemes
-
-for s in schemes:
-
-    sid = s.get(
-        "scheme_url",
-        ""
-    )
-
-    if sid:
-
-        s["scheme_url"] = (
-            "https://www.google.com/search?q="
-            + s["name"]
-            + "+official+government+scheme"
+    for s in schemes:
+    
+        sid = s.get(
+            "scheme_url",
+            ""
         )
-
-return schemes
+    
+        if sid:
+        
+            s["scheme_url"] = (
+                "https://www.google.com/search?q="
+                + s["name"]
+                + "+official+government+scheme"
+            )
+    
+    return schemes
 
 def save_to_supabase(user_id: str, segment_key: str, notifications: list):
     sb = get_sb()
