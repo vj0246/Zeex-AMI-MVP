@@ -136,22 +136,18 @@ def fetch_user(uid: str) -> dict:
 #    res = sb.table(TABLE_SCHEMES).select("id, name").eq("is_active", True).execute()
 #    return res.data or []
 def fetch_schemes():
-sb = get_sb()
 
-res = (
-    sb
-    .table(TABLE_SCHEMES)
-    .select(
-        "id,name,scheme_url"
-    )
-    .eq(
-        "is_active",
-        True
-    )
-    .execute()
-)
+    sb = get_sb()
 
-schemes = res.data or []
+    res = (
+        sb
+        .table(TABLE_SCHEMES)
+        .select("id, name, scheme_url")
+        .eq("is_active", True)
+        .execute()
+    )
+
+    return res.data or []
 
 for s in schemes:
 
