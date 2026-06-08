@@ -135,7 +135,7 @@ def fetch_user(uid: str) -> dict:
 #    sb  = get_sb()
 #    res = sb.table(TABLE_SCHEMES).select("id, name").eq("is_active", True).execute()
 #    return res.data or []
-def fetch_schemes()
+def fetch_schemes():
 sb = get_sb()
 
 res = (
