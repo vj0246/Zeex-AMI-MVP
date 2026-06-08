@@ -136,6 +136,8 @@ def fetch_user(uid: str) -> dict:
 #    res = sb.table(TABLE_SCHEMES).select("id, name").eq("is_active", True).execute()
 #    return res.data or []
 
+from urllib.parse import quote_plus
+
 def fetch_schemes():
     sb = get_sb()
     
@@ -156,17 +158,24 @@ def fetch_schemes():
     
     for s in schemes:
     
-        sid = s.get(
+        existing = s.get(
             "scheme_url",
             ""
         )
     
-        if sid:
+        if not existing:
         
             s["scheme_url"] = (
+            
                 "https://www.google.com/search?q="
-                + s["name"]
-                + "+official+government+scheme"
+    
+                +
+    
+                quote_plus(
+                    s["name"]
+                    + " official government scheme"
+                )
+    
             )
     
     return schemes
@@ -398,6 +407,7 @@ def dashboard():
             "body":                  row.get("body",""),
             "scheme_id":             row.get("scheme_id",""),
             "scheme_name":           row.get("scheme_name",""),
+            "scheme_url":            row.get("scheme_url",""),
             "source_bucket":         row.get("source_bucket",""),
             "dependency_vector_used":row.get("dependency_vector_used",""),
             "attention_strategy":    row.get("attention_strategy",""),
