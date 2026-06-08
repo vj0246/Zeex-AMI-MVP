@@ -177,8 +177,6 @@ const NotifCard = ({ notif, index }) => {
       <p style={{ fontSize:15
 , color:"var(--text)", lineHeight:1.65, opacity:0.72, margin:0 }}>{notif.body}</p>
       <Divider />
-      <Divider />
-
       {notif.scheme_name && (
       
       <div
@@ -202,7 +200,7 @@ const NotifCard = ({ notif, index }) => {
       >
       {notif.scheme_name}
       </p>
-      
+
       {notif.scheme_url && (
       
       <button
@@ -222,15 +220,15 @@ const NotifCard = ({ notif, index }) => {
       fontWeight:600,
       fontSize:13
       }}
-      
+
       >
       
       View Scheme → </button>
-      
+
       )}
-      
+
       </div>
-      
+
       )}
 
 
